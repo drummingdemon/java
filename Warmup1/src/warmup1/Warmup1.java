@@ -31,6 +31,10 @@ public class Warmup1 {
         sortArguments(args);
         // EX.3.i
         listDuplicates(args);
+        // EX.4.a & .b & .c
+        fibonacci(10);
+        // EX.5
+        listDivisors(args);
         
     }
     
@@ -77,7 +81,7 @@ public class Warmup1 {
     public static String argumentSum(String[] args) {
         int sum = 0;
         for (String arg : args) {
-            if (isNumberic(arg)) {
+            if (isNumber(arg)) {
                 sum += Integer.valueOf(arg);
             }
         }
@@ -86,7 +90,7 @@ public class Warmup1 {
     
     public static void listEvenArguments(String[] args) {
         for (String arg : args) {
-            if (isNumberic(arg) && isEven(arg)) {
+            if (isNumber(arg) && isEven(arg)) {
                 printout(arg);
             }
         }
@@ -115,13 +119,50 @@ public class Warmup1 {
         }
     }
     
+    public static void listDivisors(String[] args) {
+        List<Integer> divisors = new ArrayList<>();
+        for (String arg : args) {
+            if (isNumber(arg)) {
+                int a = Integer.valueOf(arg);
+                for (int i = 1; i <= a; i++) {
+                    if ((a % i) == 0) {
+                        divisors.add(i);
+                    }
+                }
+            }
+        }
+        for (int div : divisors) {
+            printout(String.valueOf(div) + " ");
+        }
+    }
+    
     /* HELPER METHODS */
     
-    public static Boolean isNumberic(String str) {
+    public static Boolean isNumber(String str) {
         return str.chars().allMatch( Character::isDigit );
     }
     
     public static Boolean isEven(String a) {
         return Integer.valueOf(a)%2 == 0;
+    }
+    
+    public static void fibonacci(int n) {
+        int fibonacci[] = new int[n];
+        for (int i = 0; i < n; i++) {
+            if (i == 0) {
+                fibonacci[i] = i;
+                continue;
+            }
+            if (i == 1 | i == 2) {
+                fibonacci[i] = 1;
+                continue;
+            }
+            fibonacci[i] = fibonacci[i-1] + fibonacci[i-2];
+        }
+        String response = new String();
+        for (int num : fibonacci) {
+            response = response + " " + String.valueOf(num);
+        }
+        printout(response);
     }
 }

@@ -1,5 +1,7 @@
 /*
- * Upon receiving 
+ * Upon receiving "Hello" from a Client, sends a "BYE" disconnect message
+ * to which the server also closes its' socket when "BYE" is heard back from
+ * the client.
  */
 package clientserver1;
 

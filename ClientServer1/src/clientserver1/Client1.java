@@ -1,5 +1,6 @@
 /*
- * 
+ * Sends "Hello" to a server and disconnects upon hearing "BYE" to which
+ * it responds with a similar "BYE" disconnect message
  */
 package clientserver1;
 

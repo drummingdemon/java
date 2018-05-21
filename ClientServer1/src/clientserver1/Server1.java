@@ -27,7 +27,7 @@ public class Server1 {
         listener = new ServerSocket(PORT_NUMBER);
         socket = listener.accept();
         input = new Scanner(socket.getInputStream(), "utf-8");
-        output = new PrintWriter(socket.getOutputStream(), true);
+        output = new PrintWriter(socket.getOutputStream(), false);
         String msg;
         do {
             msg = input.nextLine();
